@@ -6,7 +6,6 @@ import Market from './Market'
 export const Dashboard = () => {
   return (
     <div className='divide-slate-500'>
-        {/* <Header/> */}
         <Hero/>
     </div>
   )

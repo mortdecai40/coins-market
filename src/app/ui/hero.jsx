@@ -7,6 +7,7 @@ import Image from 'next/image';
 import Market from './Market';
 import { FaEthereum } from "react-icons/fa";
 import { FaBitcoinSign } from "react-icons/fa6";
+import { Fade } from "react-reveal";
 
 
 export const Hero = () => {
@@ -60,41 +61,53 @@ export const Hero = () => {
                 </div>
             </div>
 
-            <div className='bg-slate-950  h-screen w-full text-white p-4  flex flex-col gap-5 justify-center xl:py-32 md:py-20 md:px-28 xl:px-40'>
-                <div className='from-slate-950 to-slate-900 bg-gradient-to-tl rounded-xl p-5 w-full text-white'>
-                    <div className='flex flex-col gap-4'>
-                        <div className='font-semibold sm:text-xs xl:text-xl line-clamp-2 flex'>
-                            Address :
-                            {accountDisplay ? (
-                                    <>
-                                          <div className='ml-1 bg-pink-400 rounded-full font-thin px-2 py-1 text-sm'>
-                                {accountDisplay}
+
+
+            <div className='bg-slate-950  h-screen w-full text-white p-4  flex flex-col gap-5 justify-center xl:py-28 md:py-20 md:px-28 xl:px-40'>
+                {(accountDisplay || userBalance) && (
+                    <Fade>
+                        <div className='from-slate-900 to-slate-900 bg-gradient-to-tl rounded-xl p-5 w-full text-white'>
+                            <div className='flex flex-col gap-4'>
+                                <div className='font-semibold sm:text-xs xl:text-xl line-clamp-2 flex items-center'>
+                                    Address :
+                                    {accountDisplay ? (
+                                        <>
+                                            <div className='ml-1 bg-pink-400 rounded-full font-thin px-2 py-1 text-sm line-clamp-1'>
+                                                <div>
+                                                    <span className="hidden sm:inline">{accountDisplay}</span>
+                                                    <span className="sm:hidden">{accountDisplay.slice(0, 10)}...</span>
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        accountDisplay
+                                    )}
+                                </div>
+                                <div className='font-semibold sm:text-xs xl:text-xl flex '>
+                                    <p>Balance : </p>
+                                    <div className='flex gap-2 ml-2 items-center'>
+                                        {userBalance ? (
+                                            <>
+                                                {userBalance}
+                                                <div className='bg-slate-800 text-xs p-1 rounded-sm text-blue-800'>
+                                                    <p>ETH</p>
+                                                </div>
+                                                <FaEthereum />
+                                            </>
+                                        ) : (
+                                            userBalance
+                                        )}
+                                    </div>
+                                </div>
+                                {errorMessage}
                             </div>
-                                    </>
-                                ) : (
-                                    accountDisplay
-                                )}
                         </div>
-                        <div className='font-semibold sm:text-xs xl:text-xl flex '>
-                            <p>Balance : </p>
-                            <div className='flex gap-2 ml-2 items-center'>
-                                {userBalance ? (
-                                    <>
-                                        {userBalance}
-                                        <div className='bg-slate-800 text-xs p-1 rounded-sm  text-blue-800'>
-                                            <p>ETH</p>
-                                        </div>
-                                        <FaEthereum />
-                                    </>
-                                ) : (
-                                    userBalance
-                                )}
-                            </div>
-                        </div>
-                        {errorMessage}
-                    </div>
-                </div>
-                <Market />
+                    </Fade>
+                )}
+                <Fade>
+
+                    <Market />
+                </Fade>
 
             </div>
         </>
