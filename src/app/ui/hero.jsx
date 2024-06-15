@@ -7,7 +7,6 @@ import Image from 'next/image';
 import Market from './Market';
 import { FaEthereum } from "react-icons/fa";
 import { FaBitcoinSign } from "react-icons/fa6";
-import { Fade } from "react-reveal";
 
 
 export const Hero = () => {
@@ -65,7 +64,7 @@ export const Hero = () => {
 
             <div className='bg-slate-950  h-screen w-full text-white p-4  flex flex-col gap-5 justify-center xl:py-28 md:py-20 md:px-28 xl:px-40'>
                 {(accountDisplay || userBalance) && (
-                    <Fade>
+                    
                         <div className='from-slate-900 to-slate-900 bg-gradient-to-tl rounded-xl p-5 w-full text-white'>
                             <div className='flex flex-col gap-4'>
                                 <div className='font-semibold sm:text-xs xl:text-xl line-clamp-2 flex items-center'>
@@ -102,13 +101,9 @@ export const Hero = () => {
                                 {errorMessage}
                             </div>
                         </div>
-                    </Fade>
                 )}
-                <Fade>
 
                     <Market />
-                </Fade>
-
             </div>
         </>
     )
